@@ -1,12 +1,4 @@
 <?php
-        /**
- * $db_host = 'mysql77.1gb.ru';
- *         $db_user = 'gb_testdbname';
- *         $db_pass = 'z337fc7avnm';
- *         $db_name = 'gb_testdbname';
- *         
- *         $cnn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
- */
         
         include("system/db.php");
         
