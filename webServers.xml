@@ -1,0 +1,14 @@
+<application>
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="b1607c21-b49c-4880-a0fe-6af2fc00bb46" name="Stations&amp;Samples" url="http://testtest-su.1gb.ru">
+        <fileTransfer host="testtest-su.1gb.ru" port="21" rootFolder="/http/laravel" password="df98dfd0df9ddf99dfcbdf92dfc9dfc8dfc9dfcb" username="w_testtest-su_c351247f">
+          <advancedOptions>
+            <advancedOptions controlEncoding="utf-8" dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</application>
