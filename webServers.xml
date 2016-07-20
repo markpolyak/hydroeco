@@ -1,0 +1,17 @@
+<application>
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="40747097-f215-41b6-ae36-d5ddc3e33246" name="laravel" url="http://localhost">
+        <fileTransfer port="0" accessType="LOCAL" />
+      </webServer>
+      <webServer id="04cd13e1-47bd-4d4a-a5f3-98887b77fa8f" name="project" url="http://testtest-su.1gb.ru">
+        <fileTransfer host="testtest-su.1gb.ru" port="21" username="w_testtest-su_c351247f">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</application>
