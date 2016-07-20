@@ -9,14 +9,6 @@
           <option name="port" value="21" />
         </fileTransfer>
       </webServer>
-      <webServer id="5f0b0d13-2e53-45c4-a2e7-10bb20eb3522" name="ProressApp" url="http://testtest-su.1gb.ru">
-        <fileTransfer host="testtest-su.1gb.ru" port="21" rootFolder="/http" username="w_testtest-su_c351247f">
-          <advancedOptions>
-            <advancedOptions controlEncoding="UTF-8" dataProtectionLevel="Private" />
-          </advancedOptions>
-          <option name="port" value="21" />
-        </fileTransfer>
-      </webServer>
     </option>
   </component>
 </application>
