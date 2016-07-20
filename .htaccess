@@ -1,0 +1,12 @@
+
+AddDefaultCharset UTF-8
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
+
+Redirect 301 /db.php http://domentest.1gb.ru/
+
+ErrorDocument 404 /index.php
