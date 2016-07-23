@@ -9,14 +9,6 @@
           <option name="port" value="21" />
         </fileTransfer>
       </webServer>
-      <webServer id="947c54d0-503e-468f-90cd-0e1f7275bbd9" name="ProgressApp" url="http://myprogres.ru/">
-        <fileTransfer host="myprogres.ru" port="21" rootFolder="/www/myprogres.ru" password="dfcddfc2dfc0dfd8dfcfdfc2dfc0dfc2df9bdf98df99" username="alhafram">
-          <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" />
-          </advancedOptions>
-          <option name="port" value="21" />
-        </fileTransfer>
-      </webServer>
     </option>
   </component>
 </application>
