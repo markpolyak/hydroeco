@@ -1,0 +1,14 @@
+<application>
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="4a104d84-6124-4495-b1bd-f0cd1f09f168" name="MyProgress" url="http://myprogres.ru/">
+        <fileTransfer host="myprogres.ru" port="21" username="alhafram">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</application>
