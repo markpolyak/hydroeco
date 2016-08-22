@@ -37,12 +37,15 @@
                     <li class="nav-header">
                         <!-- logo can be here -->
                     </li>
+                    
                     <li>
                         <a href="{{url('/')}}"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Данные по станциям</span></a>
                     </li>
+                    
                     <li>
                         <a href="{{url('/create')}}"><i class="fa fa-edit"></i> <span class="nav-label">Ввод данных</span></a>
                     </li>
+
                 </ul>
 
             </div>
@@ -50,15 +53,6 @@
     </div>
 
     <div id="page-wrapper" class="gray-bg">
-        <div class="row border-bottom">
-            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
-                <ul class="nav navbar-top-links navbar-right">
-                    <li>
-                        <span class="m-r-sm text-muted welcome-message">Welcome message</span>
-                    </li>
-                </ul>
-            </nav>
-        </div>
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="row">
                 <div class="col-lg-12">
@@ -118,10 +112,11 @@
                                 <div class="ibox-content">
                                     <input type="text" class="form-control input-sm m-b-xs" id="filter" placeholder="Поиск по результатам">
 
-                                    <table class="footable table table-stripped samples" data-page-size="8" data-filter=#filter>
+                                    <table class="footable table table-stripped samples" data-page-size="25" data-filter=#filter>
                                         <thead>
                                         <tr>
                                             <th>Акватория</th>
+                                            <th>Ссылка на пигмент</th>
                                             <th>Станция</th>
                                             <th>Дата пробы</th>
                                             <th data-hide="phone,tablet">Номер</th>
@@ -298,12 +293,14 @@
                 selectedStations = [];
                 $('.selectStation').val(selectedStations).change();
                 $('.selectArea').val(selectedStations).change();
+                $("table.samples tbody").empty();
             });
 
             $('#clearStations').click(function ()
             {
                 selectedStations = [];
                 $('.selectStation').val(selectedStations).change();
+                $("table.samples tbody").empty();
             });
 
             $('#allTime').click(function ()
@@ -317,8 +314,6 @@
                 startDate = $('#reportrange').data('daterangepicker').startDate.format("YYYY-MM-DD");
                 endDate = $('#reportrange').data('daterangepicker').endDate.format("YYYY-MM-DD");
 
-                //alert(startDate + "\n" + endDate + "\n" + selectedStations);
-
                 var result = selectedStations.join(",");
                 if (result != ""){
                     $.ajax({
@@ -330,22 +325,33 @@
 
                                 var areaIndex = -1;
                                 var sampleInfo = {};
-                                $.each(stations, function(i,s){
-                                    $.each(s.values, function(ii, c){
-                                        if (sample.id_station == c.key){
+                                var link = "";
+                                $.each(stations, function(i,s)
+                                {
+                                    $.each(s.values, function(ii, c)
+                                    {
+                                        if (sample.id_station == c.key)
+                                        {
                                             areaIndex = index;
                                             sampleInfo = c;
                                         }
                                     });
                                 });
-
+                                
+                                if(sample.id_sample != null)
+                                {
+                                    link = "<a href='pigment/" + sample.id_sample + '?date=' + sample.date + '&id_station=' + sampleInfo.value + "'>Посмотреть пробу</a>";
+                                }
+                                
                                 $("table.samples tbody")
                                         .append($("<tr><td>"
-                                                +areas[areaIndex]+"</td><td>"
+                                                +areas[sample.id_water_area]+"</td><td>"
+                                                +link+"</td><td>"
                                                 +sampleInfo.value+"</td><td>"
                                                 +sample.date+"</td><td>"
                                                 +sample.serial_number+"</td><td>"
-                                                +sample.comment+"</td></tr>"));
+                                                +sample.comment+"</td></td>"
+                                                ));
                             })
                         },
                         error: function(e){
@@ -364,8 +370,8 @@
                 startDate: '01/01/2012',
                 endDate: moment().format('MM/DD/YYYY'),
                 minDate: '01/01/2012',
-                maxDate: '12/31/2015',
-                dateLimit: { days: 60 },
+                maxDate: moment().format('MM/DD/YYYY'),
+                dateLimit: { days: 360 },
                 showDropdowns: true,
                 showWeekNumbers: true,
                 timePicker: false,

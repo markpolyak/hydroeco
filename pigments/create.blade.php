@@ -1,5 +1,11 @@
+<?php
+
+$cnn = mysqli_connect('localhost', 'root', '', 'pigments') or die("Connection Error");
+
+?>
+
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
+<html>
 
 <head>
 
@@ -33,32 +39,21 @@
                 <li class="nav-header">
                     <!-- logo can be here -->
                 </li>
+
                 <li>
                     <a href="{{url('/')}}"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Данные по станциям</span></a>
                 </li>
+
                 <li>
                     <a href="{{url('/create')}}"><i class="fa fa-edit"></i> <span class="nav-label">Ввод данных</span></a>
                 </li>
+
             </ul>
 
         </div>
     </nav>
 
     <div id="page-wrapper" class="gray-bg">
-        <div class="row border-bottom">
-            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
-                <ul class="nav navbar-top-links navbar-right">
-                    <li>
-                        <span class="m-r-sm text-muted welcome-message">Welcome message</span>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-sign-out"></i> Log out
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="row">
                 <div class="col-lg-12">
@@ -71,7 +66,7 @@
                                 </a>
                             </div>
                         </div>
-
+                        
                         <div class="row">
                             <div class="col-lg-5">
                                 <div class="ibox float-e-margins">
@@ -150,87 +145,109 @@
 
                                                 <div class="form-group">
 
-                                                    <label >IDTrophicCharacterization</label>
-                                                    <select class="form-control">
+                                                    <label >Тропическая характеризация воды</label>
+                                                    <?php
+                                                    $query = mysqli_query($cnn, "SELECT * FROM trophic_characterization_of_water");
+                                                    ?>
+                                                    <select class="IDTrophicCharacterization form-control">
+                                                    <?php
+                                                    while($row = mysqli_fetch_array($query))
+                                                    {
+                                                    ?>
+                                                        <option><?php echo $row['id_trophic_characterization']; ?></option>
+                                                    <?php
+                                                    }
+                                                    ?>
                                                     </select>
 
                                                 </div>
 
                                                 <div class="form-group">
 
-                                                    <label>IDHorizon</label>
-                                                    <select class="form-control">
+                                                    <label>Данные о горизонте</label>
+                                                    <?php
+                                                    $query = mysqli_query($cnn, "SELECT * FROM horizon_levels");
+                                                    ?>
+                                                    <select class="IDHorizon form-control">
+                                                    <?php
+                                                    while($row = mysqli_fetch_array($query))
+                                                    {
+                                                    ?>
+                                                        <option><?php echo $row['id_horizon']; ?></option>
+                                                    <?php
+                                                    }
+                                                    ?>
                                                     </select>
 
                                                 </div>
 
                                                 <div class="form-group">
 
-                                                    <label>VolumeOfFilteredWater</label>
-                                                    <input type="text" placeholder="VolumeOfFilteredWater" class="form-control" />
+                                                    <label>Объём профильтрованной воды</label>
+                                                    <input type="text" placeholder="VolumeOfFilteredWater" class="VolumeOfFilteredWater form-control" />
 
                                                 </div>
 
                                                 <div class="form-group">
 
-                                                    <label>ChlorophyllAConcentration</label>
-                                                    <input type="text" placeholder="ChlorophyllAConcentration" class="form-control" />
+                                                    <label>Концентрация хлорофилла A</label>
+                                                    <input type="text" placeholder="ChlorophyllAConcentration" class=" ChlorophyllAConcentration form-control" />
 
                                                 </div>
 
                                                 <div class="form-group">
 
-                                                    <label>ChlorophyllBConcentration</label>
-                                                    <input type="text" placeholder="ChlorophyllBConcentration" class="form-control" />
+                                                    <label>Концентрация хлорофилла B</label>
+                                                    <input type="text" placeholder="ChlorophyllBConcentration" class="ChlorophyllBConcentration form-control" />
 
                                                 </div>
 
                                                 <div class="form-group">
 
-                                                    <label>ChlorophyllCConcentration</label>
-                                                    <input type="text" placeholder="ChlorophyllCConcentration" class="form-control" />
+                                                    <label>Концентрация хлорофилла C</label>
+                                                    <input type="text" placeholder="ChlorophyllCConcentration" class="ChlorophyllCConcentration form-control" />
 
                                                 </div>
 
                                                 <div class="form-group">
 
-                                                    <label>A(665K)</label>
-                                                    <input type="text" placeholder="A(665K)" class="form-control" />
+                                                    <label>Оптическая плотность</label>
+                                                    <input type="text" placeholder="A(665K)" class="A form-control" />
 
                                                 </div>
 
                                                 <div class="form-group">
 
-                                                    <label>PigmentIndex</label>
-                                                    <input type="text" placeholder="PigmentIndex" class="form-control" />
+                                                    <label>Пигментный индекс</label>
+                                                    <input type="text" placeholder="PigmentIndex" class="PigmentIndex form-control" />
 
                                                 </div>
 
                                                 <div class="form-group">
 
-                                                    <label>Pheopigments</label>
-                                                    <input type="text" placeholder="Pheopigments" class="form-control" />
+                                                    <label>Феопигменты</label>
+                                                    <input type="text" placeholder="Pheopigments" class="Pheopigments form-control" />
 
                                                 </div>
 
                                                 <div class="form-group">
 
-                                                    <label>RationOfChAChBChC</label>
-                                                    <input type="text" placeholder="RationOfChAChBChC" class="form-control" />
+                                                    <label>Отношение хлорофила A / C</label>
+                                                    <input type="text" placeholder="RatioOfChAToChC" class="RatioOfChAToChC form-control" />
 
                                                 </div>
 
                                                 <div class="form-group">
 
                                                     <label>Комментарий</label>
-                                                    <textarea style="resize: vertical;" placeholder="Комментарий" class="form-control" /></textarea>
+                                                    <textarea style="resize: vertical;" placeholder="Комментарий" class="PigmentComment form-control" /></textarea>
 
                                                 </div>
 
                                                 <div class="form-group">
 
-                                                    <label>Порядковый номер</label>
-                                                    <input type="text" placeholder="Порядковый номер" class="form-control" />
+                                                    <label>Порядковый номер пробы</label>
+                                                    <input type="text" placeholder="Порядковый номер" class="PigmentNumber form-control" />
 
                                                 </div>
                                             </div>
@@ -244,8 +261,6 @@
 
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -286,7 +301,7 @@
     <script>
         $(document).ready(function(){
             $('#pgInterface').hide();
-            var areas = ["Невская губа","Курортная зона","Восточная часть Финского залива (ВЧФЗ)"];
+            var areas = ["","Невская губа","Курортная зона","Восточная часть Финского залива (ВЧФЗ)"];
 
             var stations = [{"values":[
                 {"key":1,"value":"5"},
@@ -367,29 +382,61 @@
 
             });
 
-            $('button.addsample').click(function (){
-                var data = {};
-                var selectedIndex = $('.selectStation')[0].selectedIndex;
-                data.id_station = selectedIndex;
-                var date = $(".date-sample").datepicker("getDate").toJSON();
-                data.date = date;
-                data.comment = $('.comment-sample').val();
-                data.serial_number = $('.serial-sample').val();
-                var tmp = JSON.stringify(data);
-
-                $.ajax({
-                    type: "POST",
-                    dataType: "json",
-                    url: "create.php",
-                    data: {'sample':tmp},
-                    success: function(){
-                        alert('Отправлено!');
-                    },
-                    error: function(e){
-                        alert(e.responseText);
-                    }
-                });
-            });
+			$('button.addsample').click(function()
+            {
+                if($('#pigmentInterface')[0].checked)
+                {
+                    var data = {};
+    				var selectedIndex = $('.selectStation').val();
+    				data.id_station = selectedIndex;
+    				var date = $(".date-sample").datepicker("getDate").toJSON();
+    				data.date = date;
+    				data.comment = $('.comment-sample').val();
+    				data.serial_number = $('.serial-sample').val();
+                    
+                    data.pigment = $('#pigmentInterface')[0].checked;
+                    data.id_trophic_characterization = $('.IDTrophicCharacterization').val();
+                    data.id_horizon = $('.IDHorizon').val();
+                    data.volume_of_filtered_water = $('.VolumeOfFilteredWater').val();
+                    data.chlorophyll_a_concentration = $('.ChlorophyllAConcentration').val();
+                    data.chlorophyll_b_concentration = $('.ChlorophyllBConcentration').val();
+                    data.chlorophyll_c_concentration	 = $('.ChlorophyllCConcentration').val();
+                    data.pigment_index = $('.PigmentIndex').val();
+                    data.a = $('.A').val();
+                    data.pheopigments = $('.Pheopigments').val();
+                    data.ratio_of_cl_a_to_cl_c = $('.RatioOfChAToChC').val();
+                    data.pigment_comment = $('.PigmentComment').val();
+                    data.pigment_serial_number = $('.PigmentNumber').val();
+                    
+    				var tmp = JSON.stringify(data);
+                }
+                else
+                {
+                    var data = {};
+    				var selectedIndex = $('.selectStation').val();
+    				data.id_station = selectedIndex;
+    				var date = $(".date-sample").datepicker("getDate").toJSON();
+    				data.date = date;
+    				data.comment = $('.comment-sample').val();
+    				data.serial_number = $('.serial-sample').val();
+    				var tmp = JSON.stringify(data);	
+                }
+                
+				$.ajax({
+    					type: "POST",
+    					dataType: "json",
+    					url: "create.php",
+    					data: {'sample':tmp},
+    					success: function()
+                        {
+    						alert('Done!');
+    					},
+    					error: function()
+                        {
+    						alert('Some errors');
+                        }
+                    });
+			});
 
             $('.date-sample').datepicker({
                 todayBtn: "linked",
