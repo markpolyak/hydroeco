@@ -17,15 +17,15 @@ class HydroController extends Controller {
          return view('pigments.mainpage');
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
 	public function create()
 	{
 		return view('pigments.create');
 	}
+    
+    public function pigments()
+    {
+        return view('pigments.pigments');
+    }
 
 	/**
 	 * Store a newly created resource in storage.
@@ -45,7 +45,7 @@ class HydroController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+
 	}
 
 	/**
