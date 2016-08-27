@@ -2,7 +2,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="4a104d84-6124-4495-b1bd-f0cd1f09f168" name="MyProgress" url="http://myprogres.ru/">
-        <fileTransfer host="myprogres.ru" port="21" username="alhafram">
+        <fileTransfer host="myprogres.ru" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
@@ -10,5 +10,8 @@
         </fileTransfer>
       </webServer>
     </option>
+  </component>
+  <component name="webServersAuthStorage">
+    <data>AAAAcE+aoYmYLRRwMZXBSPxI9ysiDbSL9Y50WlxL8FFbp8wlVeUI4L7FqwCSbv+vby9Ejo8dJVoNdLoCs1uzR7vAwaZRXeRrxFDx5utrgi5tpSOPFbyoRxEuaOxgxEo5iDnUj9GbEhV7Nep2d7sQcnJMKM95hObqxU7wlEk6VFYafuVQ</data>
   </component>
 </application>
