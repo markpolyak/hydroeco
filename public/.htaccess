@@ -13,3 +13,5 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+Redirect 301 http://hydro-data.onlinemkd.ru/ http://hydro-data.onlinemkd.ru/index.php
