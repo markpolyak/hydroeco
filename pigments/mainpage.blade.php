@@ -1,57 +1,8 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Stations & Samples - Index</title>
-
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
-
-    <!-- Toastr style -->
-    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
-
-    <link href="css/plugins/chosen/chosen.css" rel="stylesheet">
-
-    <!-- Gritter -->
-    <link href="js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
-
-    <link href="css/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet">
-    <link href="css/plugins/select2/select2.min.css" rel="stylesheet">
-
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-
-
-</head>
-
-<body>
-
-    <div id="wrapper">
-        <nav class="navbar-default navbar-static-side" role="navigation">
-            <div class="sidebar-collapse">
-                <ul class="nav metismenu" id="side-menu">
-                    <li class="nav-header">
-                        <!-- logo can be here -->
-                    </li>
-                    
-                    <li>
-                        <a href="{{url('/')}}"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Данные по станциям</span></a>
-                    </li>
-                    
-                    <li>
-                        <a href="{{url('/create')}}"><i class="fa fa-edit"></i> <span class="nav-label">Ввод данных</span></a>
-                    </li>
-
-                </ul>
-
-            </div>
-        </nav>
-    </div>
-
+@extends('app')
+@section('content')
+<?php
+//$cnn = pg_connect("host=pg.sweb.ru port=5432 dbname=mpolyakru_hbio user=mpolyakru_hbio password=test1234") or die("Connection Error");
+?>
     <div id="page-wrapper" class="gray-bg">
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="row">
@@ -178,52 +129,118 @@
 
         $(document).ready(function()
         {
-            var areas = ["Невская губа","Курортная зона","Восточная часть Финского залива (ВЧФЗ)"];
+            
+            var areas = ["Невская губа", "Район захоронения грунтов в Невской губе", "Восточная часть Финского залива (ВЧФЗ)", "Район захоронения грунтов в ВЧФЗ", "Очистные сооружения на о. Белом" , "Северные очистные сооружения", "Курортная зона"];
 
             var stations = [{"values":[
                 {"key":1,"value":"5"},
-                {"key":2,"value":"1"},
-                {"key":3,"value":"2"},
-                {"key":4,"value":"30"},
-                {"key":5,"value":"25"},
-                {"key":6,"value":"6"},
-                {"key":7,"value":"7"},
-                {"key":8,"value":"9"},
-                {"key":9,"value":"10"},
-                {"key":10,"value":"11"},
-                {"key":13,"value":"12"},
-                {"key":14,"value":"13"},
-                {"key":15,"value":"39"},
-                {"key":16,"value":"14"},
-                {"key":18,"value":"42"},
-                {"key":19,"value":"15"},
-                {"key":20,"value":"16"},
-                {"key":21,"value":"17"}]},
+                {"key":2,"value":"30"},
+                {"key":3,"value":"25"},
+                {"key":4,"value":"6"},
+                {"key":5,"value":"7"},
+                {"key":6,"value":"9"},
+                {"key":7,"value":"10"},
+                {"key":8,"value":"11"},
+                {"key":9,"value":"11а"},
+                {"key":10,"value":"14"},
+                {"key":11,"value":"14а"},
+                {"key":12,"value":"12"},
+                {"key":13,"value":"13"},
+                {"key":14,"value":"39"},
+                {"key":15,"value":"42"},
+                {"key":16,"value":"15"},
+                {"key":17,"value":"16"},
+                {"key":18,"value":"17"},
+                {"key":19,"value":"17а"},
+                {"key":20,"value":"1"},
+                {"key":21,"value":"2"},
+                {"key":22,"value":"12а"}]},
+                
                 {"values":[
-                    {"key":11,"value":"11a"},
-                    {"key":12,"value":"12a"},
-                    {"key":17,"value":"14a"},
-                    {"key":22,"value":"17a"},
-                    {"key":23,"value":"19a"},
-                    {"key":24,"value":"20a"}
+                    {"key":23,"value":"фоновая 1"},
+                    {"key":24,"value":"фоновая 2"},
+                    {"key":25,"value":"K5"},
+                    {"key":26,"value":"K6"},
+                    {"key":27,"value":"K7"},
+                    {"key":28,"value":"K8"},
+                    {"key":29,"value":"K9"},
+                    {"key":57,"value":"ф1"},
+                    {"key":58,"value":"Д1"},
+                    {"key":59,"value":"Д2"},
                 ]},
+                
                 {"values":[
-                    {"key":25,"value":"19"},
-                    {"key":26,"value":"20"},
-                    {"key":27,"value":"21"},
-                    {"key":28,"value":"26"},
-                    {"key":29,"value":"22"},
-                    {"key":30,"value":"24"},
-                    {"key":31,"value":"1"},
-                    {"key":32,"value":"2"},
-                    {"key":33,"value":"3"},
-                    {"key":34,"value":"4"},
-                    {"key":35,"value":"A"},
-                    {"key":36,"value":"3к"},
-                    {"key":37,"value":"6к"},
-                    {"key":38,"value":"6л"},
-                    {"key":39,"value":"18л"}
-                ]}
+                    {"key":30,"value":"19"},
+                    {"key":31,"value":"20"},
+                    {"key":32,"value":"21"},
+                    {"key":33,"value":"22"},
+                    {"key":34,"value":"24"},
+                    {"key":35,"value":"26"},
+                    {"key":36,"value":"21(K2"},
+                    {"key":37,"value":"23"},
+                    {"key":38,"value":"1"},
+                    {"key":39,"value":"2"},
+                    {"key":40,"value":"3"},
+                    {"key":41,"value":"4"},
+                    {"key":42,"value":"А"},
+                    {"key":43,"value":"14"},
+                    {"key":44,"value":"13"},
+                    {"key":45,"value":"12"},
+                    {"key":46,"value":"11"},
+                    {"key":47,"value":"18л"},
+                    {"key":48,"value":"6л"},
+                    {"key":49,"value":"6к"},
+                    {"key":50,"value":"3к"},
+                    {"key":72,"value":"25"},
+                    {"key":73,"value":"27"},
+                    {"key":74,"value":"29"},
+                    {"key":75,"value":"28"},
+                ]},
+                
+                {"values":[
+                    {"key":51,"value":"К1"},
+                    {"key":52,"value":"К2"},
+                    {"key":53,"value":"К3"},
+                    {"key":54,"value":"К4"},
+                    {"key":55,"value":"21(К2)"},
+                    {"key":56,"value":"К5"},
+                    {"key":76,"value":"ф2"},
+                    {"key":77,"value":"ф3"},
+                    {"key":78,"value":"Д3"},
+                    {"key":79,"value":"Д4"},
+                    {"key":80,"value":"Д5"},
+                    {"key":81,"value":"Д6"},
+                ]},
+                
+                {"values":[
+                    {"key":60,"value":"б2"},
+                    {"key":61,"value":"Б1-I"},
+                    {"key":62,"value":"Б1-II"},
+                    {"key":63,"value":"Б1-III"},
+                    {"key":64,"value":"Б3-II"},
+                    {"key":65,"value":"Б3-III"},
+                    {"key":87,"value":"Б1'"},
+                    {"key":88,"value":"Б3''"},
+                    {"key":89,"value":"Б3'''"},
+                    ]},
+                
+                {"values":[
+                    {"key":66,"value":"С1'"},
+                    {"key":67,"value":"С2'"},
+                    {"key":68,"value":"С3'"},
+                    {"key":69,"value":"С1'''"},
+                    {"key":70,"value":"С2'''"},
+                    {"key":71,"value":"С3'''"},
+                    {"key":90,"value":"С2''"},
+                    ]},
+                    
+                {"values":[
+                    {"key":82,"value":"19к"},
+                    {"key":83,"value":"20к"},
+                    {"key":84,"value":"К1"},
+                    {"key":85,"value":"Г1"},
+                    {"key":86,"value":"Г2"},
+                ]},
             ];
 
             $('.footable').footable();
@@ -305,7 +322,11 @@
 
             $('#allTime').click(function ()
             {
-                $('#reportrange span').html('Jan 01, 2012' + ' - ' + moment().format('MMMM D, YYYY'));
+                $('#reportrange span').html('Jan 01, 1970' + ' - ' + moment().format('MMMM D, YYYY'));
+                $('#reportrange').daterangepicker({
+                format: 'MM/DD/YYYY',
+                startDate: '01/01/1970'
+                });
             });
 
             $('.selectStation').change(function(){
@@ -313,7 +334,6 @@
                 $(".selectStation option:selected").each(function(){selectedStations.push($(this).attr("value"));});
                 startDate = $('#reportrange').data('daterangepicker').startDate.format("YYYY-MM-DD");
                 endDate = $('#reportrange').data('daterangepicker').endDate.format("YYYY-MM-DD");
-
                 var result = selectedStations.join(",");
                 if (result != ""){
                     $.ajax({
@@ -322,7 +342,6 @@
                         success: function(data){
                             $("table.samples tbody").empty();
                             $(data).each(function(index, sample){
-
                                 var areaIndex = -1;
                                 var sampleInfo = {};
                                 var link = "";
@@ -342,10 +361,9 @@
                                 {
                                     link = "<a href='pigment/" + sample.id_sample + '?date=' + sample.date + '&id_station=' + sampleInfo.value + "'>Посмотреть пробу</a>";
                                 }
-                                
                                 $("table.samples tbody")
                                         .append($("<tr><td>"
-                                                +areas[sample.id_water_area]+"</td><td>"
+                                                +areas[sample.id_water_area - 1]+"</td><td>"
                                                 +link+"</td><td>"
                                                 +sampleInfo.value+"</td><td>"
                                                 +sample.date+"</td><td>"
@@ -367,11 +385,11 @@
 
             $('#reportrange').daterangepicker({
                 format: 'MM/DD/YYYY',
-                startDate: '01/01/2012',
+                startDate: '01/01/2016',
                 endDate: moment().format('MM/DD/YYYY'),
-                minDate: '01/01/2012',
+                minDate: '01/01/1970',
                 maxDate: moment().format('MM/DD/YYYY'),
-                dateLimit: { days: 360 },
+                dateLimit: { days: 720 },
                 showDropdowns: true,
                 showWeekNumbers: true,
                 timePicker: false,
@@ -409,5 +427,4 @@
         });
 
     </script>
-</body>
-</html>
+@stop
