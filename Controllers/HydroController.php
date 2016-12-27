@@ -26,6 +26,16 @@ class HydroController extends Controller {
     {
         return view('pigments.pigments');
     }
+	
+	public function add()
+    {
+        return view('pigments.add');
+    }
+    
+    public function phyto()
+    {
+        return view('pigments.phyto');
+    }
 
 	/**
 	 * Store a newly created resource in storage.
