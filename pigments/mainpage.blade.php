@@ -3,6 +3,9 @@
 <?php
 //$cnn = pg_connect("host=pg.sweb.ru port=5432 dbname=mpolyakru_hbio user=mpolyakru_hbio password=test1234") or die("Connection Error");
 ?>
+        <?php
+            require_once 'DBdataMap.php';
+         ?>
     <div id="page-wrapper" class="gray-bg">
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="row">
@@ -51,6 +54,7 @@
                                                 <a href="#" id="selectStations">Выбрать все</a>
                                                 &nbsp;&nbsp;&nbsp;
                                                 <a href="#" id="clearStations">Очистить</a>
+                                                <a href="#" id="mapStations" style="margin-left: 10px;">Отметить на карте</a>
                                             </div>
                                         </div>
                                     </div>
@@ -92,11 +96,13 @@
                 </div>
             </div>
         </div>
+        <div id="map" style="width: 600px; height: 600px; display: none; margin: auto;"></div>
         <div class="footer">
             <div>
                 <strong>Copyright</strong> 2015
             </div>
         </div>
+
 
     </div>
 
@@ -123,15 +129,32 @@
 
     <!-- Select2 -->
     <script src="js/plugins/select2/select2.full.min.js"></script>
+    
+
+
+    <!-- Map.js -->
+
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script>
+
+      // Вместо JSON нужно обрабатывать просто то, что получим самими, через 
+      // объекты, скорее всего
+
+      var phpDataObject = <?php echo $jsonString ?>;
+      
+    </script>
 
     <!-- Page-Level Scripts -->
     <script>
+        
+        var selectedStations = [];
+        var selectedAreas = [];
 
         $(document).ready(function()
         {
             
             var areas = ["Невская губа", "Район захоронения грунтов в Невской губе", "Восточная часть Финского залива (ВЧФЗ)", "Район захоронения грунтов в ВЧФЗ", "Очистные сооружения на о. Белом" , "Северные очистные сооружения", "Курортная зона"];
-
+            // stations.values[i].value
             var stations = [{"values":[
                 {"key":1,"value":"5"},
                 {"key":2,"value":"30"},
@@ -256,8 +279,8 @@
             });
 
             $('.selectArea').empty();
-            var selectedAreas = [];
-            var selectedStations = [];
+            // var selectedAreas = [];
+            // var selectedStations = [];
             var startDate = '';
             var endDate = '';
 
@@ -282,6 +305,11 @@
                                         .text(areas[value] + ":" + station.value)); })
                 });
             });
+
+            // $('.selectStations').change(function() {
+            //     var placeholder = 5;
+            //     placeholder += 5;
+            // });
 
 
             $('#selectAquatories').click(function ()
@@ -318,7 +346,36 @@
                 selectedStations = [];
                 $('.selectStation').val(selectedStations).change();
                 $("table.samples tbody").empty();
+                
+                while (SelCollection.getLength()) {
+                    for (var i = 0; i < SelCollection.getLength(); i++) {
+                        var object = SelCollection.get(i);
+                        object.options.set('preset', "twirl#blueIcon");
+                        myCollection.add(object);
+
+                    }
+                }
+                $('.selectStation').empty();
+
             });
+
+            // Открыть карту
+            
+            var mapToggle = true;
+
+
+            $('#mapStations').click(function () {
+                // $('#map').slideDown();
+                if (mapToggle) {
+                    $('#map').css("display", "block");
+                    mapToggle = false;
+                } else {
+                    $('#map').css("display", "none");
+                    mapToggle = true;
+                }
+            });
+
+            // ----------------
 
             $('#allTime').click(function ()
             {
@@ -427,4 +484,6 @@
         });
 
     </script>
+
+    <script src="js/map.js"></script>
 @stop
