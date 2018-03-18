@@ -96,7 +96,7 @@
                 </div>
             </div>
         </div>
-        <div id="map" style="width: 600px; height: 600px; display: none; margin: auto;"></div>
+        <div id="map" style="width: 75%; height: 600px; display: none; margin: auto;"></div>
         <div class="footer">
             <div>
                 <strong>Copyright</strong> 2015
@@ -352,6 +352,7 @@
                         var object = SelCollection.get(i);
                         object.options.set('preset', "twirl#blueIcon");
                         myCollection.add(object);
+                        object.selected = false;
 
                     }
                 }
